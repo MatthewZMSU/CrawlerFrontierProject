@@ -1,0 +1,17 @@
+@import play.api.i18n.Messages.implicitMessagesProviderToMessages
+@(songForm: Form[Song], songs: Seq[Song])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+
+@import helper._
+
+@main("Welcome to Play") {
+  <h1 class="headers">Welcome to Matthew's music service!</h1>
+  <span>Insert song's name and duration:</span>
+  @form(routes.Application.insertSong) {
+    @inputText(songForm("name"))
+    @inputText(songForm("duration"))
+    @CSRF.formField
+
+    <input type="submit"/>
+  }
+}
+
